@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Florence & Chianti — June 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep:      #1a4a2e;
+    --green-mid:       #2d6a4f;
+    --green-muted:     #3d7a5f;
+    --green-pale:      #c8e6d4;
+    --green-wash:      #edf7f1;
+    --terracotta:      #a33a10;
+    --terracotta-mid:  #c04a20;
+    --terracotta-pale: #f0ddd4;
+    --terracotta-wash: #faf2ee;
+    --gold:            #9a7a10;
+    --gold-light:      #c4a030;
+    --gold-pale:       #f0e4b0;
+    --parchment:       #faf6ec;
+    --parchment-dark:  #ede4cc;
+    --parchment-deep:  #d8ccaa;
+    --ink:             #1e1a14;
+    --ink-mid:         #3e3428;
+    --ink-light:       #7a6e5e;
+    --white:           #fdfaf4;
+    --tab-height:      70px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'Crimson Text', Georgia, serif;
+    background: var(--parchment);
+    color: var(--ink);
+    min-height: 100vh;
+    max-width: 480px;
+    margin: 0 auto;
+    overflow-x: hidden;
+    background-image: radial-gradient(ellipse at 30% 80%, rgba(45,106,79,0.04) 0%, transparent 60%);
+  }
+
+  /* ── HEADER ── */
+  .app-header {
+    background: linear-gradient(160deg, var(--green-deep) 0%, var(--green-mid) 100%);
+    padding: 22px 20px 18px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 20px rgba(30,26,20,0.25);
+    border-bottom: 2px solid var(--gold-light);
+    overflow: hidden;
+  }
+
+  .app-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c4a030' fill-opacity='0.06'%3E%3Cpath d='M20 20.5V18H0v5h5v5H0v5h20v-2.5h5v2.5h15v-5h-5v-5h5v-5H25v2.5H20zm0 2v1.5h5V22h-5zm0-4.5h5V16H20v2zm-5 4.5H10v-1.5H5V22h5v1.5h5V22zm0-4.5v1.5H10V16H5v1.5h10V18z'/%3E%3C/g%3E%3C/svg%3E");
+    opacity: 1;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .header-title {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-pale);
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    line-height: 1.2;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+  }
+
+  .header-subtitle {
+    font-family: 'IM Fell English', serif;
+    color: var(--green-pale);
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 4px;
+    opacity: 0.9;
+  }
+
+  .header-ornament { font-size: 28px; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3)); }
+
+  .header-dates {
+    margin-top: 14px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .date-chip {
+    background: rgba(196,160,48,0.15);
+    border: 1px solid rgba(196,160,48,0.3);
+    color: var(--gold-pale);
+    font-family: 'Crimson Text', serif;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 3px;
+  }
+
+  /* ── CONTENT ── */
+  .content { padding: 16px 14px calc(var(--tab-height) + 16px); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin: 22px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--parchment-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::before { content: '✦'; color: var(--gold-light); font-size: 9px; }
+
+  /* ── LOCATION STRIP ── */
+  .location-strip { display: flex; gap: 10px; margin-bottom: 18px; }
+
+  .location-pill {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid rgba(196,160,48,0.2);
+  }
+
+  .location-pill.florence {
+    background: linear-gradient(145deg, var(--green-deep), var(--green-mid));
+  }
+
+  .location-pill.chianti {
+    background: linear-gradient(145deg, var(--terracotta), var(--terracotta-mid));
+  }
+
+  .location-pill-title {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-pale);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .location-pill-sub {
+    font-family: 'IM Fell English', serif;
+    color: rgba(200,230,212,0.8);
+    font-size: 11px;
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  .location-pill.chianti .location-pill-sub {
+    color: rgba(240,221,212,0.8);
+  }
+
+  /* ── DAY CARDS ── */
+  .day-card {
+    background: var(--white);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(30,26,20,0.08), 0 0 0 1px rgba(30,26,20,0.06);
+  }
+
+  .day-card-header {
+    background: linear-gradient(135deg, var(--green-deep), var(--green-muted));
+    padding: 13px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 2px solid rgba(196,160,48,0.35);
+  }
+
+  .day-card-header.chianti {
+    background: linear-gradient(135deg, var(--terracotta), var(--terracotta-mid));
+  }
+
+  .day-number {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--gold-light);
+    opacity: 0.9;
+  }
+
+  .day-title {
+    font-family: 'IM Fell English', serif;
+    color: var(--white);
+    font-size: 17px;
+    font-style: italic;
+    margin-top: 2px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+
+  .day-chevron {
+    color: var(--gold-light);
+    font-size: 16px;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+
+  .day-card.open .day-chevron { transform: rotate(180deg); }
+  .day-card-body { display: none; padding: 4px 0; background: var(--white); }
+  .day-card.open .day-card-body { display: block; }
+
+  /* ── TIME ROWS ── */
+  .time-row {
+    display: flex;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--parchment-dark);
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .time-row:last-child { border-bottom: none; }
+  .time-row:nth-child(even) { background: var(--parchment); }
+
+  .time-badge {
+    background: var(--green-wash);
+    color: var(--green-deep);
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 7px;
+    border-radius: 3px;
+    min-width: 52px;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    border: 1px solid rgba(45,106,79,0.2);
+  }
+
+  .time-badge.chianti-badge {
+    background: var(--terracotta-wash);
+    color: var(--terracotta);
+    border-color: rgba(163,58,16,0.2);
+  }
+
+  .time-detail { flex: 1; }
+
+  .time-desc {
+    font-family: 'Crimson Text', serif;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  .time-tip {
+    font-family: 'IM Fell English', serif;
+    font-size: 13px;
+    color: var(--ink-light);
+    margin-top: 3px;
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  .time-tip.warning {
+    color: var(--terracotta);
+    font-style: normal;
+    font-family: 'Crimson Text', serif;
+    font-weight: 600;
+  }
+
+  /* ── RESTAURANT CARDS ── */
+  .restaurant-card {
+    background: var(--white);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(30,26,20,0.07), 0 0 0 1px rgba(30,26,20,0.06);
+  }
+
+  .restaurant-top-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--green-deep), var(--green-muted));
+  }
+
+  .restaurant-top-bar.pending-bar {
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  }
+
+  .restaurant-header {
+    padding: 13px 14px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .restaurant-name {
+    font-family: 'IM Fell English', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.2;
+  }
+
+  .booked-badge {
+    background: var(--green-wash);
+    color: var(--green-deep);
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    margin-left: 8px;
+    border: 1px solid rgba(45,106,79,0.2);
+  }
+
+  .pending-badge {
+    background: var(--gold-pale);
+    color: var(--ink-mid);
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    margin-left: 8px;
+    border: 1px solid rgba(154,122,16,0.2);
+  }
+
+  .restaurant-meta {
+    padding: 0 14px 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .meta-chip {
+    font-family: 'Crimson Text', serif;
+    font-size: 13px;
+    color: var(--ink-mid);
+  }
+
+  .restaurant-divider { height: 1px; background: var(--parchment-dark); margin: 0 14px; }
+
+  .restaurant-note {
+    padding: 10px 14px;
+    font-family: 'IM Fell English', serif;
+    font-size: 13px;
+    color: var(--ink-light);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .restaurant-action { padding: 8px 14px 13px; }
+
+  .phone-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-wash);
+    color: var(--green-deep);
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid rgba(45,106,79,0.2);
+    letter-spacing: 0.3px;
+  }
+
+  /* ── EXCURSION CARDS ── */
+  .excursion-card {
+    background: var(--white);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(30,26,20,0.07), 0 0 0 1px rgba(30,26,20,0.06);
+    border-left: 4px solid var(--green-mid);
+  }
+
+  .excursion-card.booked  { border-left-color: var(--green-mid); }
+  .excursion-card.pending { border-left-color: var(--gold-light); }
+  .excursion-card.hotel   { border-left-color: var(--terracotta-mid); }
+
+  .excursion-inner { padding: 13px 14px; }
+
+  .excursion-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+  }
+
+  .excursion-name {
+    font-family: 'IM Fell English', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .excursion-day {
+    font-family: 'Crimson Text', serif;
+    font-size: 12px;
+    color: var(--ink-light);
+    margin-bottom: 6px;
+  }
+
+  .excursion-desc {
+    font-family: 'Crimson Text', serif;
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.5;
+  }
+
+  .excursion-tip {
+    margin-top: 8px;
+    font-family: 'IM Fell English', serif;
+    font-size: 12px;
+    color: var(--terracotta);
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  /* ── TRAVEL CARDS ── */
+  .travel-card {
+    background: var(--white);
+    border-radius: 6px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(30,26,20,0.07), 0 0 0 1px rgba(30,26,20,0.06);
+  }
+
+  .travel-card-header {
+    background: linear-gradient(135deg, var(--green-deep), var(--green-muted));
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid rgba(196,160,48,0.3);
+  }
+
+  .travel-card-header.terracotta-bg {
+    background: linear-gradient(135deg, var(--terracotta), var(--terracotta-mid));
+  }
+
+  .travel-icon { font-size: 18px; }
+
+  .travel-card-title {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-pale);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+  }
+
+  .travel-card-body { padding: 12px 14px; }
+
+  .travel-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--parchment-dark);
+    gap: 12px;
+  }
+
+  .travel-row:last-child { border-bottom: none; }
+
+  .travel-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    color: var(--ink-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    flex-shrink: 0;
+    min-width: 70px;
+    padding-top: 2px;
+  }
+
+  .travel-value {
+    font-family: 'Crimson Text', serif;
+    font-size: 14px;
+    color: var(--ink);
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  .travel-note {
+    background: var(--gold-pale);
+    border-left: 3px solid var(--gold-light);
+    padding: 10px 12px;
+    margin-top: 12px;
+    border-radius: 0 4px 4px 0;
+    font-family: 'IM Fell English', serif;
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* ── HOTEL CARDS ── */
+  .hotel-card {
+    background: var(--white);
+    border-radius: 6px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(30,26,20,0.10), 0 0 0 1px rgba(30,26,20,0.07);
+  }
+
+  .hotel-banner {
+    background: linear-gradient(150deg, var(--green-deep), var(--green-muted));
+    padding: 22px 18px 18px;
+    border-bottom: 2px solid var(--gold-light);
+  }
+
+  .hotel-banner.chianti-banner {
+    background: linear-gradient(150deg, var(--terracotta), var(--terracotta-mid));
+  }
+
+  .hotel-emoji { font-size: 26px; margin-bottom: 8px; }
+
+  .hotel-name {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-pale);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+  .hotel-location {
+    font-family: 'IM Fell English', serif;
+    color: rgba(200,230,212,0.85);
+    font-size: 13px;
+    margin-top: 5px;
+    font-style: italic;
+  }
+
+  .hotel-banner.chianti-banner .hotel-location {
+    color: rgba(240,221,212,0.85);
+  }
+
+  .hotel-body { padding: 16px 14px; }
+
+  .hotel-dates { display: flex; gap: 8px; margin-bottom: 16px; }
+
+  .hotel-date-chip {
+    background: var(--green-wash);
+    color: var(--green-deep);
+    font-family: 'Crimson Text', serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 10px;
+    border-radius: 4px;
+    flex: 1;
+    text-align: center;
+    line-height: 1.3;
+    border: 1px solid rgba(45,106,79,0.15);
+  }
+
+  .hotel-date-chip.chianti-chip {
+    background: var(--terracotta-wash);
+    color: var(--terracotta);
+    border-color: rgba(163,58,16,0.15);
+  }
+
+  .hotel-date-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    display: block;
+    opacity: 0.7;
+    margin-bottom: 2px;
+  }
+
+  .hotel-info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--parchment-dark);
+  }
+
+  .hotel-info-row:last-child { border-bottom: none; }
+  .hotel-info-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+
+  .hotel-info-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--ink-light);
+    font-weight: 600;
+  }
+
+  .hotel-info-value {
+    font-family: 'Crimson Text', serif;
+    font-size: 14px;
+    color: var(--ink);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  .hotel-phone-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--green-deep), var(--green-muted));
+    color: var(--gold-pale);
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 13px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 14px;
+    width: 100%;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(196,160,48,0.25);
+  }
+
+  .hotel-phone-btn.chianti-btn {
+    background: linear-gradient(135deg, var(--terracotta), var(--terracotta-mid));
+  }
+
+  /* ── WARNING BOX ── */
+  .warning-box {
+    background: var(--terracotta-wash);
+    border: 1px solid rgba(163,58,16,0.25);
+    border-radius: 5px;
+    padding: 12px 14px;
+    margin: 12px 12px 4px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .warning-box-icon { font-size: 18px; flex-shrink: 0; }
+
+  .warning-box-text {
+    font-family: 'Crimson Text', serif;
+    font-size: 14px;
+    color: var(--terracotta);
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  /* ── TAB BAR ── */
+  .tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    height: var(--tab-height);
+    background: var(--green-deep);
+    border-top: 2px solid var(--gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 4px;
+    box-shadow: 0 -4px 20px rgba(30,26,20,0.25);
+    z-index: 200;
+  }
+
+  .tab-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 6px 4px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    flex: 1;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+
+  .tab-btn.active { background: rgba(196,160,48,0.12); }
+
+  .tab-icon { font-size: 18px; opacity: 0.45; transition: opacity 0.15s; }
+  .tab-btn.active .tab-icon { opacity: 1; }
+
+  .tab-label {
+    font-family: 'Cinzel', serif;
+    font-size: 7px;
+    color: var(--green-pale);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    opacity: 0.6;
+    transition: all 0.15s;
+  }
+
+  .tab-btn.active .tab-label { color: var(--gold-light); opacity: 1; }
+
+  /* ── DESTINATION CARDS ── */
+  .dest-card {
+    background: var(--white);
+    border-radius: 6px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(30,26,20,0.10), 0 0 0 1px rgba(30,26,20,0.07);
+  }
+
+  .dest-banner {
+    padding: 24px 18px 20px;
+    border-bottom: 2px solid var(--gold-light);
+  }
+
+  .dest-florence {
+    background: linear-gradient(150deg, var(--green-deep), var(--green-muted));
+  }
+
+  .dest-chianti {
+    background: linear-gradient(150deg, var(--terracotta), var(--terracotta-mid));
+  }
+
+  .dest-emoji { font-size: 28px; margin-bottom: 8px; }
+
+  .dest-name {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-pale);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+  .dest-sub {
+    font-family: 'IM Fell English', serif;
+    color: rgba(200,230,212,0.85);
+    font-size: 13px;
+    margin-top: 5px;
+    font-style: italic;
+  }
+
+  .dest-chianti .dest-sub { color: rgba(240,221,212,0.85); }
+
+  .dest-body {
+    padding: 18px 16px;
+  }
+
+  .dest-body p {
+    font-family: 'Crimson Text', serif;
+    font-size: 15px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .dest-body p:last-of-type { margin-bottom: 0; }
+
+  .dest-facts {
+    margin-top: 18px;
+    border-top: 1px solid var(--parchment-dark);
+    padding-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .dest-fact {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .dest-fact-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  .dest-fact-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--ink-light);
+    font-weight: 600;
+  }
+
+  .dest-fact-value {
+    font-family: 'Crimson Text', serif;
+    font-size: 14px;
+    color: var(--ink);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  /* ── MAPS ── */
+  .map-card {
+    background: var(--white);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(30,26,20,0.10), 0 0 0 1px rgba(30,26,20,0.07);
+    margin-bottom: 18px;
+  }
+
+  .map-banner {
+    padding: 16px 18px 13px;
+    border-bottom: 2px solid var(--gold-light);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .map-banner.florence-map { background: linear-gradient(150deg, var(--green-deep), var(--green-muted)); }
+  .map-banner.chianti-map  { background: linear-gradient(150deg, var(--terracotta), var(--terracotta-mid)); }
+  .map-banner-emoji { font-size: 24px; flex-shrink: 0; }
+
+  .map-banner-title {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-pale);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+  .map-banner-sub {
+    font-family: 'IM Fell English', serif;
+    color: rgba(200,230,212,0.85);
+    font-size: 12px;
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  .map-banner.chianti-map .map-banner-sub { color: rgba(240,221,212,0.85); }
+
+  .map-wrap { width: 100%; height: 370px; }
+
+  .map-legend {
+    padding: 11px 14px 13px;
+    border-top: 1px solid var(--parchment-dark);
+    background: var(--parchment);
+  }
+
+  .map-legend-title {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 7px;
+  }
+
+  .map-legend-items { display: flex; flex-wrap: wrap; gap: 5px; }
+
+  .map-legend-item {
+    font-family: 'Crimson Text', serif;
+    font-size: 12px;
+    color: var(--ink-mid);
+    background: var(--white);
+    border: 1px solid var(--parchment-dark);
+    border-radius: 3px;
+    padding: 2px 7px;
+    line-height: 1.5;
+  }
+
+  /* ── MAP PLACE LISTS ── */
+  .map-places-list { padding: 6px 0; }
+
+  .map-place-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--parchment-dark);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(45,106,79,0.1);
+    transition: background 0.15s;
+  }
+
+  .map-place-row:last-child { border-bottom: none; }
+  .map-place-row:active { background: var(--green-wash); }
+
+  .map-place-cat {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .cat-hotel     { background: #e8f0e8; }
+  .cat-sight     { background: #e8f0e8; }
+  .cat-food      { background: #f5ebe6; }
+  .cat-transport { background: #ededec; }
+  .cat-wine      { background: #f0e8f0; }
+  .cat-market    { background: #f5f0e0; }
+
+  .map-place-info { flex: 1; min-width: 0; }
+
+  .map-place-name {
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .map-place-note {
+    font-family: 'IM Fell English', serif;
+    font-size: 12px;
+    color: var(--ink-light);
+    font-style: italic;
+    margin-top: 2px;
+    line-height: 1.3;
+  }
+
+  .map-place-arrow {
+    color: var(--green-mid);
+    font-size: 16px;
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
+
+  .map-place-row.chianti-row:active { background: var(--terracotta-wash); }
+  .map-place-row.chianti-row .map-place-arrow { color: var(--terracotta); }
+
+  /* map popup */
+  .map-popup {
+    display: none;
+    position: absolute;
+    bottom: 38px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(30,26,20,0.3);
+    padding: 10px 14px;
+    min-width: 180px;
+    max-width: 240px;
+    z-index: 10;
+    pointer-events: none;
+    border: 1px solid rgba(30,26,20,0.1);
+  }
+  .map-popup.visible { display: block; }
+  .map-popup::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    border-top-color: white;
+  }
+  .popup-name { font-family: 'Crimson Text', Georgia, serif; font-size: 14px; font-weight: 600; color: #1e1a14; line-height: 1.3; }
+  .popup-note { font-family: 'Crimson Text', Georgia, serif; font-size: 12px; color: #7a6e5e; margin-top: 3px; line-height: 1.4; font-style: italic; }
+
+  /* SVG map styles */
+  .svg-map-container {
+    position: relative;
+    width: 100%;
+    background: #e8f0e4;
+    overflow: hidden;
+  }
+  .svg-map-container svg { width: 100%; display: block; }
+  .map-pin-group { cursor: pointer; }
+  .map-pin-group:active .pin-circle { filter: brightness(1.2); }
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <div class="header-top">
+    <div>
+      <div class="header-title">Florence & Chianti</div>
+      <div class="header-subtitle">A Week in Tuscany — June 2026</div>
+    </div>
+    <div class="header-ornament">⚜️</div>
+  </div>
+  <div class="header-dates">
+    <span class="date-chip">✈️ 21 June — Depart</span>
+    <span class="date-chip">🏛 Nights 1–3 Florence</span>
+    <span class="date-chip">🍷 Nights 4–7 Chianti</span>
+    <span class="date-chip">✈️ 28 June — Return</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- ═══ DAYS ═══ -->
+  <div class="tab-content active" id="tab-days">
+
+    <div class="location-strip">
+      <div class="location-pill florence">
+        <div class="location-pill-title">Florence</div>
+        <div class="location-pill-sub">Days 1–3 · 21–23 June</div>
+      </div>
+      <div class="location-pill chianti">
+        <div class="location-pill-title">Chianti</div>
+        <div class="location-pill-sub">Days 4–7 · 24–28 June</div>
+      </div>
+    </div>
+
+    <!-- DAY 1 -->
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-card-header">
+        <div>
+          <div class="day-number">Day I · Sunday 21 June</div>
+          <div class="day-title">Pisa & Arrive in Florence</div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-card-body">
+        <div class="time-row"><div class="time-badge">09:40</div><div class="time-detail"><div class="time-desc">Land at Pisa International Airport</div><div class="time-tip">Take Pisamover shuttle to Pisa Centrale (~5 mins, €5pp)</div></div></div>
+        <div class="time-row"><div class="time-badge">10:30</div><div class="time-detail"><div class="time-desc">Taxi to Piazza dei Miracoli — the Leaning Tower</div><div class="time-tip">Allow 1–2 hours to explore the square. Watch your bags!</div></div></div>
+        <div class="time-row"><div class="time-badge">12:15</div><div class="time-detail"><div class="time-desc">Light lunch near the Piazza</div></div></div>
+        <div class="time-row"><div class="time-badge">13:30</div><div class="time-detail"><div class="time-desc">Taxi back to Pisa Centrale station</div></div></div>
+        <div class="time-row"><div class="time-badge">14:00</div><div class="time-detail"><div class="time-desc">Train to Florence Santa Maria Novella (~50 mins)</div><div class="time-tip warning">⚠️ Stay seated at Firenze Rifredi — NOT your stop. Wait for Santa Maria Novella (SMN).</div></div></div>
+        <div class="time-row"><div class="time-badge">~16:00</div><div class="time-detail"><div class="time-desc">Check in — Duomo Window by Brunelleschi Hospitality</div><div class="time-tip">Drop bags, freshen up, take in those Duomo views!</div></div></div>
+        <div class="time-row"><div class="time-badge">19:30</div><div class="time-detail"><div class="time-desc">🍽 Dinner — Coquinarius ✅ Booked</div><div class="time-tip">Right next to the Duomo — easy first night</div></div></div>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-card-header">
+        <div>
+          <div class="day-number">Day II · Monday 22 June</div>
+          <div class="day-title">Gardens, Da Vinci & Rooftop</div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-card-body">
+        <div class="time-row"><div class="time-badge">09:00</div><div class="time-detail"><div class="time-desc">Relaxed breakfast near the Duomo</div></div></div>
+        <div class="time-row"><div class="time-badge">10:00</div><div class="time-detail"><div class="time-desc">Boboli Gardens ✅ Booked</div><div class="time-tip">Behind Pitti Palace. Closes 4:30pm. Stunning Renaissance garden with city views.</div></div></div>
+        <div class="time-row"><div class="time-badge">12:30</div><div class="time-detail"><div class="time-desc">Lunch in the Oltrarno</div><div class="time-tip">Quieter south side of the river — artisan workshops and good trattorias</div></div></div>
+        <div class="time-row"><div class="time-badge">14:30</div><div class="time-detail"><div class="time-desc">Cross back over Ponte Vecchio</div></div></div>
+        <div class="time-row"><div class="time-badge">15:30</div><div class="time-detail"><div class="time-desc">Leonardo Da Vinci Interactive Museum ✅ Booked</div><div class="time-tip">Allow 2 hours. On Via dei Servi near the Duomo.</div></div></div>
+        <div class="time-row"><div class="time-badge">17:30</div><div class="time-detail"><div class="time-desc">Back to hotel to freshen up (5 min walk)</div></div></div>
+        <div class="time-row"><div class="time-badge">19:30</div><div class="time-detail"><div class="time-desc">🍽 Dinner — La Tenda Rossa ✅ Booked</div><div class="time-tip">Rated 4.9 — outstanding steaks, pasta & tiramisu</div></div></div>
+        <div class="time-row"><div class="time-badge">21:30</div><div class="time-detail"><div class="time-desc">🌙 La Divina Terrazza Rooftop Bar ✅ Booked</div><div class="time-tip">After-dinner drinks with panoramic Florence views. Smart casual.</div></div></div>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-card-header">
+        <div>
+          <div class="day-number">Day III · Tuesday 23 June</div>
+          <div class="day-title">Art & History</div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-card-body">
+        <div class="time-row"><div class="time-badge">09:00</div><div class="time-detail"><div class="time-desc">Giotto's Bell Tower ✅ Booked 9:00am</div><div class="time-tip">414 steps to the best view of Brunelleschi's Dome in Florence. Giotto Pass also includes Cathedral, Baptistery & Duomo Museum.</div></div></div>
+        <div class="time-row"><div class="time-badge">11:00</div><div class="time-detail"><div class="time-desc">Uffizi Gallery ✅ Booked — collect tickets by 10:45am</div><div class="time-tip">Botticelli, da Vinci, Raphael. Allow 2–3 hours.</div></div></div>
+        <div class="time-row"><div class="time-badge">14:00</div><div class="time-detail"><div class="time-desc">Lunch in the Oltrarno</div></div></div>
+        <div class="time-row"><div class="time-badge">17:30</div><div class="time-detail"><div class="time-desc">Piazzale Michelangelo — sunset views</div><div class="time-tip">Best panoramic view of Florence. 20 min walk uphill or short taxi.</div></div></div>
+        <div class="time-row"><div class="time-badge">21:00</div><div class="time-detail"><div class="time-desc">🍽 Dinner — Osteria Vecchio Cancello ✅ Booked 9pm</div><div class="time-tip">Wild boar pasta & Florentine steak</div></div></div>
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-card-header chianti">
+        <div>
+          <div class="day-number">Day IV · Wednesday 24 June</div>
+          <div class="day-title">Move to Chianti</div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-card-body">
+        <div class="time-row"><div class="time-badge chianti-badge">Morning</div><div class="time-detail"><div class="time-desc">Check out of Florence hotel</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">12:00</div><div class="time-detail"><div class="time-desc">Private transfer departs Santa Maria Novella Station → Relais Vignale, Radda</div><div class="time-tip">Allow ~15 min walk from hotel to SMN station with luggage. Arrive by 11:45am.</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">En route</div><div class="time-detail"><div class="time-desc">Coffee stop in Greve in Chianti</div><div class="time-tip">Browse the market square on your way through</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">~14:00</div><div class="time-detail"><div class="time-desc">Check in — Relais Vignale & Spa, Radda</div><div class="time-tip">Pool, terrace, vineyard views. Village is 2 min walk.</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">Evening</div><div class="time-detail"><div class="time-desc">🍽 Dinner — Solerperpassione ✅ Booked</div><div class="time-tip">7:30pm. Arrival night dinner in Radda.</div></div></div>
+      </div>
+    </div>
+
+    <!-- DAY 5 -->
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-card-header chianti">
+        <div>
+          <div class="day-number">Day V · Thursday 25 June</div>
+          <div class="day-title">A Lazy Chianti Day</div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-card-body">
+        <div class="time-row"><div class="time-badge chianti-badge">Morning</div><div class="time-detail"><div class="time-desc">Breakfast on the terrace. Slow morning by the pool.</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">11:00</div><div class="time-detail"><div class="time-desc">Drive to Greve in Chianti market</div><div class="time-tip">Local wines, cheeses, produce. ~20 mins from Radda. Back for pool by early afternoon.</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">Afternoon</div><div class="time-detail"><div class="time-desc">Pool. A glass of Chianti Classico. Nowhere to be.</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">20:00</div><div class="time-detail"><div class="time-desc">🍽 Dinner — Ristorante Vignale ✅ Booked 8pm</div><div class="time-tip">The hotel's own restaurant — just steps from your room. No need to go anywhere!</div></div></div>
+      </div>
+    </div>
+
+    <!-- DAY 6 -->
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-card-header chianti">
+        <div>
+          <div class="day-number">Day VI · Friday 26 June</div>
+          <div class="day-title">Wine Tour & Evening in Radda</div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-card-body">
+        <div class="time-row"><div class="time-badge chianti-badge">Morning</div><div class="time-detail"><div class="time-desc">Lazy morning — breakfast and pool time</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">12:30</div><div class="time-detail"><div class="time-desc">Castelvecchi Winery Tour — "From the Barrel to the Bottle"</div><div class="time-tip">Guided tour + board of local products. Arranged by hotel. Return ~4:00pm.</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">16:00</div><div class="time-detail"><div class="time-desc">Back at the pool — with a greater appreciation of what's in your glass!</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">19:30</div><div class="time-detail"><div class="time-desc">🍽 Dinner — La Perla del Palazzo ✅ Booked 7:30pm</div><div class="time-tip">In Radda village — a short stroll from the hotel</div></div></div>
+      </div>
+    </div>
+
+    <!-- DAY 7 -->
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-card-header chianti">
+        <div>
+          <div class="day-number">Day VII · Saturday 27 June</div>
+          <div class="day-title">A Last Lazy Chianti Day</div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-card-body">
+        <div class="time-row"><div class="time-badge chianti-badge">09:00</div><div class="time-detail"><div class="time-desc">Breakfast on the terrace. No rush.</div><div class="time-tip">Soak it all in — last full day in Chianti.</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">10:00</div><div class="time-detail"><div class="time-desc">Morning by the pool</div><div class="time-tip">Read, relax, swim. The Chianti hills look magnificent from the pool terrace.</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">13:00</div><div class="time-detail"><div class="time-desc">Lunch at the hotel or a drive around the Chianti villages</div><div class="time-tip">Panzano, Gaiole or Castellina in Chianti all worth a wander.</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">16:00</div><div class="time-detail"><div class="time-desc">Afternoon at leisure — pool, spa or a gentle walk</div><div class="time-tip">Pack your bags this afternoon — early start tomorrow!</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">19:00</div><div class="time-detail"><div class="time-desc">🍽 Dinner — La Bottega Del Cicciaio ✅ Booked</div><div class="time-tip">7pm. Short drive or taxi into Radda.</div></div></div>
+        <div class="warning-box" style="margin-top:12px;"><div class="warning-box-icon">⚠️</div><div class="warning-box-text">Pack tonight — driver picks up at 06:30am tomorrow. Bags ready by 06:20am!</div></div>
+      </div>
+    </div>
+
+    <div class="day-card" onclick="toggleDay(this)">
+      <div class="day-card-header chianti">
+        <div>
+          <div class="day-number">Day VIII · Sunday 28 June</div>
+          <div class="day-title">Departure — Home</div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-card-body">
+        <div class="warning-box"><div class="warning-box-icon">⚠️</div><div class="warning-box-text">Early start! Pack the night before and set your alarm.</div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">06:00</div><div class="time-detail"><div class="time-desc">Wake up. Quick breakfast. Check out.</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">06:30</div><div class="time-detail"><div class="time-desc">Private transfer departs Relais Vignale → Pisa Airport</div><div class="time-tip">Bags outside and ready by 06:20am. Driver confirmed for 06:30 departure.</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">08:15</div><div class="time-detail"><div class="time-desc">Arrive Pisa Airport. Return hire car.</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">08:30</div><div class="time-detail"><div class="time-desc">Check in and security</div></div></div>
+        <div class="time-row"><div class="time-badge chianti-badge">10:20</div><div class="time-detail"><div class="time-desc">✈️ easyJet departs Pisa → Gatwick</div><div class="time-tip">Home in East Grinstead by early afternoon!</div></div></div>
+      </div>
+    </div>
+
+  </div><!-- end tab-days -->
+
+  <!-- ═══ RESTAURANTS ═══ -->
+  <div class="tab-content" id="tab-restaurants">
+
+    <div class="section-label">Florence</div>
+
+    <div class="restaurant-card">
+      <div class="restaurant-top-bar"></div>
+      <div class="restaurant-header"><div class="restaurant-name">Coquinarius</div><div class="booked-badge">✓ BOOKED</div></div>
+      <div class="restaurant-meta"><div class="meta-chip">📅 Day 1 · Sunday 21 June</div><div class="meta-chip">🕖 7:30pm</div><div class="meta-chip">📍 Near the Duomo</div></div>
+      <div class="restaurant-divider"></div>
+      <div class="restaurant-note">Relaxed wine bar with great Tuscan dishes. Perfect for arrival night — just a stroll from the hotel.</div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="restaurant-top-bar"></div>
+      <div class="restaurant-header"><div class="restaurant-name">La Tenda Rossa</div><div class="booked-badge">✓ BOOKED</div></div>
+      <div class="restaurant-meta"><div class="meta-chip">📅 Day 2 · Monday 22 June</div><div class="meta-chip">🕖 7:30pm</div></div>
+      <div class="restaurant-divider"></div>
+      <div class="restaurant-note">Rated 4.9 — outstanding steaks, hand-rolled pasta and legendary tiramisu.</div>
+      <div class="restaurant-action"><a class="phone-link" href="tel:+390550136633">📞 +39 055 013 6633</a></div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="restaurant-top-bar"></div>
+      <div class="restaurant-header"><div class="restaurant-name">Osteria Vecchio Cancello</div><div class="booked-badge">✓ BOOKED</div></div>
+      <div class="restaurant-meta"><div class="meta-chip">📅 Day 3 · Tuesday 23 June</div><div class="meta-chip">🕙 9:00pm</div></div>
+      <div class="restaurant-divider"></div>
+      <div class="restaurant-note">Beloved local favourite — wild boar pasta and Florentine steak. Very Italian dining at 9pm!</div>
+      <div class="restaurant-action"><a class="phone-link" href="tel:+39055494234">📞 +39 055 494234</a></div>
+    </div>
+
+    <div class="section-label">Chianti — Radda</div>
+
+    <div class="restaurant-card">
+      <div class="restaurant-top-bar"></div>
+      <div class="restaurant-header"><div class="restaurant-name">Solerperpassione</div><div class="booked-badge">✓ BOOKED</div></div>
+      <div class="restaurant-meta"><div class="meta-chip">📅 Day 4 · Wednesday 24 June</div><div class="meta-chip">🕖 7:30pm</div><div class="meta-chip">📍 Radda area</div></div>
+      <div class="restaurant-divider"></div>
+      <div class="restaurant-note">Arrival night dinner in Radda.</div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="restaurant-top-bar"></div>
+      <div class="restaurant-header"><div class="restaurant-name">Ristorante Vignale</div><div class="booked-badge">✓ BOOKED</div></div>
+      <div class="restaurant-meta"><div class="meta-chip">📅 Day 5 · Thursday 25 June</div><div class="meta-chip">🕗 8:00pm</div><div class="meta-chip">📍 At the hotel</div></div>
+      <div class="restaurant-divider"></div>
+      <div class="restaurant-note">The hotel's own restaurant — no need to go anywhere. A perfect relaxed evening after a lazy day by the pool.</div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="restaurant-top-bar"></div>
+      <div class="restaurant-header"><div class="restaurant-name">La Perla del Palazzo</div><div class="booked-badge">✓ BOOKED</div></div>
+      <div class="restaurant-meta"><div class="meta-chip">📅 Day 6 · Friday 26 June</div><div class="meta-chip">🕖 7:30pm</div><div class="meta-chip">📍 Radda village</div></div>
+      <div class="restaurant-divider"></div>
+      <div class="restaurant-note">A perfect end to the winery tour day — a short stroll from the hotel into the village for dinner.</div>
+    </div>
+
+    <div class="restaurant-card">
+      <div class="restaurant-top-bar"></div>
+      <div class="restaurant-header"><div class="restaurant-name">La Bottega Del Cicciaio</div><div class="booked-badge">✓ BOOKED</div></div>
+      <div class="restaurant-meta"><div class="meta-chip">📅 Day 7 · Saturday 27 June</div><div class="meta-chip">🕖 7:00pm</div><div class="meta-chip">📍 Radda area</div></div>
+      <div class="restaurant-divider"></div>
+      <div class="restaurant-note">Last evening in Chianti — a fitting finale!</div>
+    </div>
+
+  </div><!-- end tab-restaurants -->
+
+  <!-- ═══ EXCURSIONS ═══ -->
+  <div class="tab-content" id="tab-excursions">
+
+    <div class="section-label">Florence</div>
+
+    <div class="excursion-card booked">
+      <div class="excursion-inner">
+        <div class="excursion-top"><div class="excursion-name">Boboli Gardens</div><div class="booked-badge">✓ BOOKED</div></div>
+        <div class="excursion-day">📅 Day 2 · Monday 22 June · 10:15am entry — collect tickets by 10:00am</div>
+        <div class="excursion-desc">One of Italy's finest Renaissance gardens behind the Pitti Palace. Sculptured paths, fountains and panoramic views. Allow 2 hours.</div>
+        <div class="excursion-tip">Closes at 4:30pm — morning visit is perfect</div>
+      </div>
+    </div>
+
+    <div class="excursion-card booked">
+      <div class="excursion-inner">
+        <div class="excursion-top"><div class="excursion-name">Leonardo Da Vinci Interactive Museum</div><div class="booked-badge">✓ BOOKED</div></div>
+        <div class="excursion-day">📅 Day 2 · Monday 22 June · 3:30pm</div>
+        <div class="excursion-desc">Hands-on experience with working models of da Vinci's inventions. On Via dei Servi near the Duomo. Allow 2 hours.</div>
+      </div>
+    </div>
+
+    <div class="excursion-card booked">
+      <div class="excursion-inner">
+        <div class="excursion-top"><div class="excursion-name">Giotto's Bell Tower</div><div class="booked-badge">✓ BOOKED</div></div>
+        <div class="excursion-day">📅 Day 3 · Tuesday 23 June · 9:00am</div>
+        <div class="excursion-desc">414 steps to the top — the finest view of Brunelleschi's Dome in Florence. Giotto Pass includes Cathedral, Baptistery and Duomo Museum.</div>
+      </div>
+    </div>
+
+    <div class="excursion-card booked">
+      <div class="excursion-inner">
+        <div class="excursion-top"><div class="excursion-name">Uffizi Gallery</div><div class="booked-badge">✓ BOOKED</div></div>
+        <div class="excursion-day">📅 Day 3 · Tuesday 23 June · 11:00am entry — collect tickets by 10:45am</div>
+        <div class="excursion-desc">Botticelli's Birth of Venus, da Vinci, Raphael and countless Renaissance masterworks. Allow 2–3 hours.</div>
+      </div>
+    </div>
+
+    <div class="excursion-card pending">
+      <div class="excursion-inner">
+        <div class="excursion-top"><div class="excursion-name">La Terrazza Rooftop Bar</div><div class="pending-badge">⏳ BOOK LATER</div></div>
+        <div class="excursion-day">📅 Day 2 · Monday 22 June · 6:00pm</div>
+        <div class="excursion-desc">701 Rooftop Bar, Gallery Hotel Art (7th floor). Views over Ponte Vecchio, the Arno and the Duomo. Smart casual dress.</div>
+        <div class="excursion-tip">Book closer to the date at lungarnocollection.com</div>
+      </div>
+    </div>
+
+    <div class="section-label">Chianti</div>
+
+    <div class="excursion-card hotel">
+      <div class="excursion-inner">
+        <div class="excursion-top"><div class="excursion-name">Castelvecchi Winery Tour</div><div class="booked-badge">✓ ARRANGED</div></div>
+        <div class="excursion-day">📅 Day 6 · Friday 26 June · 12:30–4:00pm</div>
+        <div class="excursion-desc">"From the Barrel to the Bottle" — guided winery tour with a board of local products. Arranged by Relais Vignale.</div>
+      </div>
+    </div>
+
+    <div class="excursion-card pending">
+      <div class="excursion-inner">
+        <div class="excursion-top"><div class="excursion-name">Greve in Chianti Market</div><div class="pending-badge">✦ Optional</div></div>
+        <div class="excursion-day">📅 Day 5 · Thursday 25 June · ~11:00am if going</div>
+        <div class="excursion-desc">Weekly market in the pretty main square. Local wines, cheeses, cured meats and produce. ~20 mins from Radda. No booking needed — go if the mood takes you!</div>
+      </div>
+    </div>
+
+  </div><!-- end tab-excursions -->
+
+  <!-- ═══ TRAVEL ═══ -->
+  <div class="tab-content" id="tab-travel">
+
+    <div class="travel-card">
+      <div class="travel-card-header"><div class="travel-icon">✈️</div><div class="travel-card-title">Outbound Flight</div></div>
+      <div class="travel-card-body">
+        <div class="travel-row"><div class="travel-label">Flight</div><div class="travel-value">EZY8315</div></div>
+        <div class="travel-row"><div class="travel-label">Airline</div><div class="travel-value">easyJet</div></div>
+        <div class="travel-row"><div class="travel-label">Route</div><div class="travel-value">London Gatwick → Pisa</div></div>
+        <div class="travel-row"><div class="travel-label">Date</div><div class="travel-value">Sunday 21 June 2026</div></div>
+        <div class="travel-row"><div class="travel-label">Departs</div><div class="travel-value">06:25 (Gatwick)</div></div>
+        <div class="travel-row"><div class="travel-label">Arrives</div><div class="travel-value">09:40 (Pisa)</div></div>
+      </div>
+    </div>
+
+    <div class="travel-card">
+      <div class="travel-card-header"><div class="travel-icon">✈️</div><div class="travel-card-title">Return Flight</div></div>
+      <div class="travel-card-body">
+        <div class="travel-row"><div class="travel-label">Flight</div><div class="travel-value">EZY8316</div></div>
+        <div class="travel-row"><div class="travel-label">Airline</div><div class="travel-value">easyJet</div></div>
+        <div class="travel-row"><div class="travel-label">Route</div><div class="travel-value">Pisa → London Gatwick</div></div>
+        <div class="travel-row"><div class="travel-label">Date</div><div class="travel-value">Sunday 28 June 2026</div></div>
+        <div class="travel-row"><div class="travel-label">Departs</div><div class="travel-value">10:20 (Pisa)</div></div>
+        <div class="travel-row"><div class="travel-label">Arrives</div><div class="travel-value">11:35 (Gatwick)</div></div>
+        <div class="travel-note">⚠️ Leave Radda by 6:45am. Pack the night before!</div>
+      </div>
+    </div>
+
+    <div class="travel-card">
+      <div class="travel-card-header terracotta-bg"><div class="travel-icon">🚄</div><div class="travel-card-title">Pisa Airport → Florence</div></div>
+      <div class="travel-card-body">
+        <div class="travel-row"><div class="travel-label">Step 1</div><div class="travel-value">Pisamover: Airport → Pisa Centrale (~5 mins, €5pp)</div></div>
+        <div class="travel-row"><div class="travel-label">Step 2</div><div class="travel-value">Train: Pisa Centrale → Firenze SMN (~50 mins)</div></div>
+        <div class="travel-row"><div class="travel-label">Tickets</div><div class="travel-value">Trenitalia app or station machines. Validate before boarding!</div></div>
+        <div class="travel-note">⚠️ Train stops at Firenze Rifredi first — stay seated! Your stop is the next one: Santa Maria Novella (SMN).</div>
+      </div>
+    </div>
+
+    <div class="travel-card">
+      <div class="travel-card-header terracotta-bg"><div class="travel-icon">🚗</div><div class="travel-card-title">Florence → Radda in Chianti</div></div>
+      <div class="travel-card-body">
+        <div class="travel-row"><div class="travel-label">Type</div><div class="travel-value">Private driver transfer</div></div>
+        <div class="travel-row"><div class="travel-label">Date</div><div class="travel-value">Wednesday 24 June (Day 4)</div></div>
+        <div class="travel-row"><div class="travel-label">Pickup</div><div class="travel-value">Santa Maria Novella Station, Florence</div></div>
+        <div class="travel-row"><div class="travel-label">Departs</div><div class="travel-value">12:00 noon</div></div>
+        <div class="travel-row"><div class="travel-label">Destination</div><div class="travel-value">Relais Vignale & Spa, Radda in Chianti</div></div>
+        <div class="travel-row"><div class="travel-label">Duration</div><div class="travel-value">~1.5 hours</div></div>
+        <div class="travel-note">💡 Allow 15 mins to walk from your hotel to SMN station with luggage. Aim to arrive at the station by 11:45am.</div>
+      </div>
+    </div>
+
+    <div class="travel-card">
+      <div class="travel-card-header terracotta-bg"><div class="travel-icon">🚗</div><div class="travel-card-title">Radda → Pisa Airport</div></div>
+      <div class="travel-card-body">
+        <div class="travel-row"><div class="travel-label">Type</div><div class="travel-value">Private driver transfer</div></div>
+        <div class="travel-row"><div class="travel-label">Date</div><div class="travel-value">Sunday 28 June (Day 8)</div></div>
+        <div class="travel-row"><div class="travel-label">Pickup</div><div class="travel-value">Relais Vignale & Spa, Radda</div></div>
+        <div class="travel-row"><div class="travel-label">Departs</div><div class="travel-value">06:30am</div></div>
+        <div class="travel-row"><div class="travel-label">Destination</div><div class="travel-value">Pisa International Airport</div></div>
+        <div class="travel-row"><div class="travel-label">Duration</div><div class="travel-value">~1.5 hours</div></div>
+        <div class="travel-note">⚠️ Bags outside and ready by 06:20am. Pack everything the night before!</div>
+      </div>
+    </div>
+
+  </div><!-- end tab-travel -->
+
+  <!-- ═══ HOTELS ═══ -->
+  <div class="tab-content" id="tab-hotels">
+
+    <div class="hotel-card">
+      <div class="hotel-banner">
+        <div class="hotel-emoji">🏛</div>
+        <div class="hotel-name">Duomo Window by Brunelleschi Hospitality</div>
+        <div class="hotel-location">Piazza del Duomo, Florence</div>
+      </div>
+      <div class="hotel-body">
+        <div class="hotel-dates">
+          <div class="hotel-date-chip"><span class="hotel-date-label">Check In</span>Sun 21 June</div>
+          <div class="hotel-date-chip"><span class="hotel-date-label">Check Out</span>Wed 24 June</div>
+          <div class="hotel-date-chip"><span class="hotel-date-label">Nights</span>3</div>
+        </div>
+        <div class="hotel-info-row"><div class="hotel-info-icon">✨</div><div class="hotel-info-content"><div class="hotel-info-label">Highlights</div><div class="hotel-info-value">Direct Duomo views, steps from all Florence sights, boutique apartment style</div></div></div>
+        <div class="hotel-info-row"><div class="hotel-info-icon">📍</div><div class="hotel-info-content"><div class="hotel-info-label">Location</div><div class="hotel-info-value">Right on Piazza del Duomo — Florence's most central location</div></div></div>
+        <div class="hotel-info-row"><div class="hotel-info-icon">🚗</div><div class="hotel-info-content"><div class="hotel-info-label">Departure</div><div class="hotel-info-value">Day 4 — check out, private transfer to Radda arranged nearby</div></div></div>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <div class="hotel-banner chianti-banner">
+        <div class="hotel-emoji">🍷</div>
+        <div class="hotel-name">Relais Vignale & Spa</div>
+        <div class="hotel-location">Radda in Chianti, Tuscany</div>
+      </div>
+      <div class="hotel-body">
+        <div class="hotel-dates">
+          <div class="hotel-date-chip chianti-chip"><span class="hotel-date-label">Check In</span>Wed 24 June</div>
+          <div class="hotel-date-chip chianti-chip"><span class="hotel-date-label">Check Out</span>Sun 28 June</div>
+          <div class="hotel-date-chip chianti-chip"><span class="hotel-date-label">Nights</span>4</div>
+        </div>
+        <div class="hotel-info-row"><div class="hotel-info-icon">✨</div><div class="hotel-info-content"><div class="hotel-info-label">Highlights</div><div class="hotel-info-value">Pool, vineyard views, spa, village 2 minutes walk</div></div></div>
+        <div class="hotel-info-row"><div class="hotel-info-icon">📍</div><div class="hotel-info-content"><div class="hotel-info-label">Location</div><div class="hotel-info-value">Edge of Radda in Chianti — walk to restaurants in 2 minutes</div></div></div>
+        <div class="hotel-info-row"><div class="hotel-info-icon">🚗</div><div class="hotel-info-content"><div class="hotel-info-label">Departure</div><div class="hotel-info-value">Sun 28 June — depart 6:30am for Pisa Airport. Pack the night before!</div></div></div>
+        <a class="hotel-phone-btn chianti-btn" href="tel:+390577738300">📞 Relais Vignale · +39 0577 738300</a>
+      </div>
+    </div>
+
+  </div><!-- end tab-hotels -->
+
+  <!-- ═══ DESTINATIONS ═══ -->
+  <div class="tab-content" id="tab-destinations">
+
+    <div class="dest-card">
+      <div class="dest-banner dest-florence">
+        <div class="dest-emoji">🏛</div>
+        <div class="dest-name">Florence</div>
+        <div class="dest-sub">Firenze · Days 1–3 · 21–23 June</div>
+      </div>
+      <div class="dest-body">
+        <p>Florence is the jewel of the Italian Renaissance — a compact, walkable city that contains more great art per square mile than almost anywhere on earth. Built on the banks of the Arno and dominated by Brunelleschi's extraordinary terracotta dome, the city has barely changed in outline since the Medici ruled it in the 15th century.</p>
+        <p>Its streets are lined with palaces, churches, medieval towers and artisan workshops. The Uffizi holds the greatest collection of Renaissance painting in the world. The Accademia houses Michelangelo's David. And yet Florence never feels like a museum — it is a living, breathing city with fantastic food, superb wine bars and a proud local identity quite distinct from Rome or Venice.</p>
+        <p>The Oltrarno neighbourhood on the south side of the Arno is quieter and more artisan — full of goldsmiths, leather workers, independent restaurants and locals going about their daily lives. Crossing Ponte Vecchio at dusk with a gelato in hand as the light turns golden on the river is one of travel's great simple pleasures.</p>
+        <div class="dest-facts">
+          <div class="dest-fact"><span class="dest-fact-icon">🏨</span><div><div class="dest-fact-label">Staying at</div><div class="dest-fact-value">Duomo Window by Brunelleschi Hospitality</div></div></div>
+          <div class="dest-fact"><span class="dest-fact-icon">📍</span><div><div class="dest-fact-label">Location</div><div class="dest-fact-value">Piazza del Duomo — the very heart of the city</div></div></div>
+          <div class="dest-fact"><span class="dest-fact-icon">🚶</span><div><div class="dest-fact-label">Getting around</div><div class="dest-fact-value">Entirely on foot — no car needed</div></div></div>
+          <div class="dest-fact"><span class="dest-fact-icon">☀️</span><div><div class="dest-fact-label">Late June</div><div class="dest-fact-value">Long warm days, around 28°C. Longest day of the year on arrival!</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dest-card">
+      <div class="dest-banner dest-chianti">
+        <div class="dest-emoji">🍷</div>
+        <div class="dest-name">Radda in Chianti</div>
+        <div class="dest-sub">Chianti Classico · Days 4–7 · 24–28 June</div>
+      </div>
+      <div class="dest-body">
+        <p>Radda in Chianti sits at the heart of the Chianti Classico wine region, perched on a hilltop between Florence and Siena at around 530 metres. It is one of the best-preserved medieval villages in Tuscany — encircled by ancient walls, its narrow streets lined with stone houses, wine shops and small trattorias.</p>
+        <p>The surrounding landscape is the quintessential Tuscan postcard — rolling hills covered in vineyards and olive groves, punctuated by cypress trees and the occasional stone farmhouse. In late June the vines are in full leaf and the countryside is at its most lush and beautiful.</p>
+        <p>The Chianti Classico wine produced here — marked with the iconic black rooster — is among Italy's finest. Estates and cellars dot the hills in every direction, many centuries old. The pace of life is slow, the food is exceptional and the evenings are long and warm.</p>
+        <div class="dest-facts">
+          <div class="dest-fact"><span class="dest-fact-icon">🏨</span><div><div class="dest-fact-label">Staying at</div><div class="dest-fact-value">Relais Vignale & Spa</div></div></div>
+          <div class="dest-fact"><span class="dest-fact-icon">📍</span><div><div class="dest-fact-label">Location</div><div class="dest-fact-value">Edge of Radda village — restaurants 2 minutes walk</div></div></div>
+          <div class="dest-fact"><span class="dest-fact-icon">🚗</span><div><div class="dest-fact-label">Getting around</div><div class="dest-fact-value">Private transfer from Florence · car for day trips</div></div></div>
+          <div class="dest-fact"><span class="dest-fact-icon">🍇</span><div><div class="dest-fact-label">Don't miss</div><div class="dest-fact-value">Chianti Classico — look for the black rooster label</div></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end tab-destinations -->
+
+  <!-- ═══ MAPS ═══ -->
+  <div class="tab-content" id="tab-maps">
+
+    <!-- INTRO NOTE -->
+    <div class="travel-note" style="margin-bottom:14px;">
+      📍 Tap any location below to open it directly in Apple Maps or Google Maps on your phone.
+    </div>
+
+    <!-- FLORENCE -->
+    <div class="map-card">
+      <div class="map-banner florence-map">
+        <div class="map-banner-emoji">🏛</div>
+        <div>
+          <div class="map-banner-title">Florence</div>
+          <div class="map-banner-sub">Hotel · Sights · Restaurants · Days 1–3</div>
+        </div>
+      </div>
+      <div class="map-places-list" id="florence-places"></div>
+    </div>
+
+    <!-- CHIANTI -->
+    <div class="map-card">
+      <div class="map-banner chianti-map">
+        <div class="map-banner-emoji">🍷</div>
+        <div>
+          <div class="map-banner-title">Chianti — Radda & Beyond</div>
+          <div class="map-banner-sub">Hotel · Restaurants · Winery · Market · Days 4–7</div>
+        </div>
+      </div>
+      <div class="map-places-list" id="chianti-places"></div>
+    </div>
+
+  </div><!-- end tab-maps -->
+
+</div><!-- end content -->
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('days', this)">
+    <div class="tab-icon">📅</div>
+    <div class="tab-label">Days</div>
+  </button>
+  <button class="tab-btn" onclick="switchTab('restaurants', this)">
+    <div class="tab-icon">🍽</div>
+    <div class="tab-label">Dining</div>
+  </button>
+  <button class="tab-btn" onclick="switchTab('excursions', this)">
+    <div class="tab-icon">🎯</div>
+    <div class="tab-label">Excursions</div>
+  </button>
+  <button class="tab-btn" onclick="switchTab('travel', this)">
+    <div class="tab-icon">✈️</div>
+    <div class="tab-label">Travel</div>
+  </button>
+  <button class="tab-btn" onclick="switchTab('hotels', this)">
+    <div class="tab-icon">🏨</div>
+    <div class="tab-label">Hotels</div>
+  </button>
+  <button class="tab-btn" onclick="switchTab('destinations', this)">
+    <div class="tab-icon">🗺</div>
+    <div class="tab-label">Places</div>
+  </button>
+  <button class="tab-btn" onclick="switchTab('maps', this)">
+    <div class="tab-icon">📍</div>
+    <div class="tab-label">Maps</div>
+  </button>
+</div>
+
+<script>
+  function switchTab(name, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo(0, 0);
+    if (name === 'maps') initMaps();
+  }
+  function toggleDay(card) { card.classList.toggle('open'); }
+
+  var mapsInited = false;
+
+  function initMaps() {
+    if (mapsInited) return;
+    mapsInited = true;
+    buildPlaceList('florence-places', florencePlaces, false);
+    buildPlaceList('chianti-places', chiantiPlaces, true);
+  }
+
+  var florencePlaces = [
+    { lat: 43.7732, lng: 11.2567, emoji: '🏨', name: 'Your Hotel — Duomo Window', note: 'Home for Nights 1–3', cat: 'hotel' },
+    { lat: 43.7731, lng: 11.2558, emoji: '⛪', name: 'Cathedral & Giotto Bell Tower', note: 'Day 3, 9am — Booked ✅', cat: 'sight' },
+    { lat: 43.7678, lng: 11.2553, emoji: '🎨', name: 'Uffizi Gallery', note: 'Day 3 — Booked ✅', cat: 'sight' },
+    { lat: 43.7625, lng: 11.2484, emoji: '🌿', name: 'Boboli Gardens', note: 'Day 2, 10am — Booked ✅', cat: 'sight' },
+    { lat: 43.7750, lng: 11.2589, emoji: '🔬', name: 'Da Vinci Interactive Museum', note: 'Day 2, 3:30pm — Booked ✅', cat: 'sight' },
+    { lat: 43.7629, lng: 11.2651, emoji: '🌅', name: 'Piazzale Michelangelo', note: 'Day 3 — stunning sunset views', cat: 'sight' },
+    { lat: 43.7679, lng: 11.2531, emoji: '🌉', name: 'Ponte Vecchio', note: 'Walk at dusk with a gelato!', cat: 'sight' },
+    { lat: 43.7721, lng: 11.2564, emoji: '🍽', name: 'Coquinarius', note: 'Day 1 dinner, 7:30pm — Booked ✅', cat: 'food' },
+    { lat: 43.7700, lng: 11.2569, emoji: '🍽', name: 'La Tenda Rossa', note: 'Day 2 dinner — Booked ✅', cat: 'food' },
+    { lat: 43.7680, lng: 11.2583, emoji: '🌙', name: 'La Divina Terrazza', note: 'Day 2, 9:30pm — rooftop bar ✅ Booked', cat: 'food' },
+    { lat: 43.7790, lng: 11.2518, emoji: '🍽', name: 'Osteria Vecchio Cancello', note: 'Day 3 dinner, 9pm — Booked ✅', cat: 'food' },
+    { lat: 43.7767, lng: 11.2479, emoji: '🚉', name: 'Santa Maria Novella Station', note: 'Day 4 — transfer departs 12:00 noon', cat: 'transport' },
+  ];
+
+  var chiantiPlaces = [
+    { lat: 43.4864, lng: 11.3727, emoji: '🏨', name: 'Relais Vignale & Spa', note: 'Your home for Nights 4–7', cat: 'hotel' },
+    { lat: 43.4863, lng: 11.3728, emoji: '🍽', name: 'Ristorante Vignale', note: 'Day 5 dinner, 8pm — Booked ✅', cat: 'food' },
+    { lat: 43.4867, lng: 11.3750, emoji: '🍽', name: 'La Perla del Palazzo', note: 'Day 6 dinner, 7:30pm — Booked ✅', cat: 'food' },
+    { lat: 43.5117, lng: 11.3650, emoji: '🍷', name: 'Castelvecchi Winery', note: 'Day 6, 12:30–4pm — arranged ✅', cat: 'wine' },
+    { lat: 43.4864, lng: 11.3730, emoji: '🍽', name: 'La Bottega Del Cicciaio', note: 'Day 7 dinner, 7pm — Booked ✅', cat: 'food' },
+    { lat: 43.4864, lng: 11.3720, emoji: '🍽', name: 'Solerperpassione', note: 'Day 4 dinner, 7:30pm — Booked ✅', cat: 'food' },
+    { lat: 43.5825, lng: 11.3169, emoji: '🛒', name: 'Greve in Chianti Market', note: 'Day 5 morning — local wines, cheeses & produce', cat: 'market' },
+  ];
+
+  function buildPlaceList(containerId, places, isChianti) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    places.forEach(function(p) {
+      var a = document.createElement('a');
+      // Opens in Apple Maps on iPhone; falls back to Google Maps in browser
+      a.href = 'https://maps.apple.com/?q=' + encodeURIComponent(p.name) + '&ll=' + p.lat + ',' + p.lng + '&t=m';
+      a.className = 'map-place-row' + (isChianti ? ' chianti-row' : '');
+
+      var catDiv = document.createElement('div');
+      catDiv.className = 'map-place-cat cat-' + p.cat;
+      catDiv.textContent = p.emoji;
+
+      var infoDiv = document.createElement('div');
+      infoDiv.className = 'map-place-info';
+      infoDiv.innerHTML = '<div class="map-place-name">' + p.name + '</div>' +
+                          '<div class="map-place-note">' + p.note + '</div>';
+
+      var arrow = document.createElement('div');
+      arrow.className = 'map-place-arrow';
+      arrow.textContent = '›';
+
+      a.appendChild(catDiv);
+      a.appendChild(infoDiv);
+      a.appendChild(arrow);
+      container.appendChild(a);
+    });
+  }
+</script>
+
+</body>
+</html>
